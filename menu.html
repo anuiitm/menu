@@ -100,6 +100,11 @@
         color: #0056b3;
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes flash-animation {0% { background-color: #C1E1C1; } 100% { background-color: transparent; } }
+
+.flash-meal {
+  animation: flash-animation 1.5s ease-out forwards;
+}
   </style>
 </head>
 <body>
@@ -414,21 +419,22 @@
       );
 
       if (dayCard) {
-        dayCard.style.display = 'flex';
-        dayCard.querySelectorAll('.meal').forEach(m => m.style.backgroundColor = '');
-        if (auto && selectedWeek === getCurrentWeek() && selectedDay === getCurrentDay()) {
-            const meal = getCurrentMeal();
-            if (meal) {
-                const mealEl = [...dayCard.querySelectorAll('.meal')].find(m =>
-                  m.querySelector('b')?.textContent.includes(meal)
-                );
-                if (mealEl) {
-                  mealEl.style.backgroundColor = "#C1E1C1";
-                  setTimeout(() => { 
-                    mealEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  }, 100); 
-                }
+    dayCard.style.display = 'flex';
+    if (auto && selectedWeek === getCurrentWeek() && selectedDay === getCurrentDay()) {
+        const meal = getCurrentMeal();
+        if (meal) {
+            const mealEl = [...dayCard.querySelectorAll('.meal')].find(m =>
+              m.querySelector('b')?.textContent.includes(meal)
+            );
+            if (mealEl) {
+              mealEl.classList.add('flash-meal')
+              setTimeout(() => {
+                mealEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }, 100);
             }
+        }
+    }
+}
         }
       }
     }
