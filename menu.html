@@ -145,14 +145,25 @@
             }
         }
 
-        @keyframes flash-animation {
-            0% {
-                background-color: #C1E1C1;
+
+        @keyframes flash-thrice-animation {
+
+            0%,
+            20%,
+            40% {
+                background-color: #e6f7ff;
             }
 
+            10%,
+            30%,
+            50%,
             100% {
                 background-color: transparent;
             }
+        }
+
+        .flash-thrice {
+            animation: flash-thrice-animation 1.5s linear;
         }
 
         .flash-meal {
@@ -1307,16 +1318,14 @@
     </div>
 
     <script>
-        // Start date of Week A. IMPORTANT: This should be a Sunday.
         const startDate = new Date("2024-07-28");
 
         function getCurrentWeek() {
             const today = new Date();
-            // Ensure time zone differences don't affect the day calculation
             const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
             const diffTime = startOfDay - startDate;
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            const weekIndex = Math.floor(diffDays / 7) % 4; // 0=A, 1=B, 2=C, 3=D
+            const weekIndex = Math.floor(diffDays / 7) % 4; 
             return ["A", "B", "C", "D"][weekIndex];
         }
 
@@ -1367,7 +1376,7 @@
                             m.querySelector('b')?.textContent.includes(meal)
                         );
                         if (mealEl) {
-                            mealEl.classList.add('flash-meal')
+                            mealEl.classList.add('flash-thrice')
                             setTimeout(() => {
                                 mealEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
                             }, 100);
