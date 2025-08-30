@@ -51,7 +51,6 @@
     .week { display: none; animation: fadeIn 0.5s ease-in-out; }
     .day-grid {
       display: grid;
-      /* We only show one card, so we can simplify this, but keeping for structure */
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 20px;
     }
@@ -61,7 +60,7 @@
       padding: 25px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       transition: transform 0.3s, box-shadow 0.3s;
-      display: flex; /* Changed from none to flex when visible */
+      display: flex; 
       flex-direction: column;
     }
     .day-card:hover { 
@@ -75,7 +74,7 @@
       padding-bottom: 10px;
       margin-bottom: 15px;
     }
-    .meal { margin: 12px 0; padding-left: 20px; border-left: 4px solid #4facfe; transition: background-color 0.3s; }
+    .meal { margin: 12px 0; padding: 10px; border-left: 4px solid #4facfe; transition: background-color 0.3s; border-radius: 0 5px 5px 0;}
     .meal b { color: #343a40; }
     .meal ul {
       list-style-type: disc;
@@ -184,7 +183,7 @@
           <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Boiled Green Gram</li><li>Chocos</li><li>Aloo Paratha</li><li>Cabbage Paratha</li><li>Curd</li><li>Green Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Green Methi Paratha</li><li>Mixed Dal Tadka</li><li>Jeera Aloo</li><li>Tindly Fry</li><li>Ridge Gourd Masala</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Bread Pakora with Sauce</li></ul></div>
-          <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Masoor Dal</li><li>Tawa Mix Veg Sabzi</li><li>Banana Fruit</li><li>Milk + Boost</li></ul></div>
+          <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Masoor Dal</li><li>Lawaania Veg Sabzi</li><li>Banana Fruit</li><li>Milk + Boost</li></ul></div>
         </div>
         <div class="day-card">
           <h3>Sunday</h3>
@@ -294,7 +293,7 @@
           <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Boiled Green Gram</li><li>Chocos</li><li>Aloo Paratha</li><li>Cabbage Paratha</li><li>Curd</li><li>Green Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Green Methi Paratha</li><li>Mixed Dal Tadka</li><li>Jeera Aloo</li><li>Tindly Fry</li><li>Ridge Gourd Masala</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Makhana Chaat</li></ul></div>
-          <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Masoor Dal</li><li>Tawa Mix Veg Sabzi</li><li>Banana Fruit</li><li>Milk + Boost</li></ul></div>
+          <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Masoor Dal</li><li>Lawaania Veg Sabzi</li><li>Banana Fruit</li><li>Milk + Boost</li></ul></div>
         </div>
         <div class="day-card">
           <h3>Sunday</h3>
@@ -363,12 +362,15 @@
   </div>
 
   <script>
-    // Start date of Week A
+    // Start date of Week A. IMPORTANT: This should be a Sunday.
     const startDate = new Date("2024-07-28");
 
     function getCurrentWeek() {
       const today = new Date();
-      const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+      // Ensure time zone differences don't affect the day calculation
+      const startOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      const diffTime = startOfDay - startDate;
+      const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
       const weekIndex = Math.floor(diffDays / 7) % 4; // 0=A, 1=B, 2=C, 3=D
       return ["A", "B", "C", "D"][weekIndex];
     }
@@ -381,14 +383,12 @@
     function getCurrentMeal() {
       const now = new Date();
       const hour = now.getHours();
-      const minute = now.getMinutes();
-      const time = hour + minute / 60;
 
-      if (time >= 7 && time < 9.5) return "Breakfast";
-      if (time >= 12 && time < 14.5) return "Lunch";
-      if (time >= 16.5 && time < 17.5) return "Snacks";
-      if (time >= 19 && time < 21.5) return "Dinner";
-      return null; // outside meal times
+      if (hour >= 7 && hour < 10) return "Breakfast";  
+      if (hour >= 10 && hour < 15) return "Lunch";    
+      if (hour >= 15 && hour < 18) return "Snacks";   
+      if (hour >= 18 && hour < 22) return "Dinner";  
+      return "Breakfast";
     }
 
     function updateView(auto = true) {
@@ -403,44 +403,35 @@
         selectedWeek = document.getElementById('weekSelect').value;
         selectedDay = document.getElementById('daySelect').value;
       }
-
-      // Hide all weeks
       document.querySelectorAll('.week').forEach(el => el.style.display = 'none');
       const weekEl = document.getElementById('week' + selectedWeek);
       if (!weekEl) return;
       
       weekEl.style.display = 'block';
-
-      // Hide all day cards in the current week
       weekEl.querySelectorAll('.day-card').forEach(card => card.style.display = 'none');
-
-      // Find and show the selected day's card
       const dayCard = [...weekEl.querySelectorAll('.day-card')].find(card =>
         card.querySelector("h3")?.textContent.includes(selectedDay)
       );
 
       if (dayCard) {
         dayCard.style.display = 'flex';
-        
-        // Reset background for all meals in the card first
-        dayCard.querySelectorAll('.meal').forEach(m => m.style.background = '');
-
-        // Highlight current meal only if it is the current day/week
-        if (selectedWeek === getCurrentWeek() && selectedDay === getCurrentDay()) {
+        dayCard.querySelectorAll('.meal').forEach(m => m.style.backgroundColor = '');
+        if (auto && selectedWeek === getCurrentWeek() && selectedDay === getCurrentDay()) {
             const meal = getCurrentMeal();
             if (meal) {
                 const mealEl = [...dayCard.querySelectorAll('.meal')].find(m =>
                   m.querySelector('b')?.textContent.includes(meal)
                 );
                 if (mealEl) {
-                  mealEl.style.background = "#e6f7ff";
+                  mealEl.style.backgroundColor = "#C1E1C1";
+                  setTimeout(() => { 
+                    mealEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                  }, 100); 
                 }
             }
         }
       }
     }
-
-    // Auto run on load
     window.onload = () => updateView(true);
   </script>
 
