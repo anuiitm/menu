@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mess Menu</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">  <style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍽️</text></svg>">
+  <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f4f7fb;
@@ -100,6 +101,34 @@
         color: #0056b3;
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* --- New Styles for Show/Hide Meals --- */
+    .day-card .meal {
+      display: none; /* Hide all meals by default */
+    }
+
+    .day-card.show-all-meals .meal {
+      display: block; /* Show all meals when the parent card has this class */
+    }
+
+    .show-full-menu-btn {
+      display: none; /* Hide the button by default */
+      padding: 10px 15px;
+      font-size: 0.9em;
+      font-weight: bold;
+      color: white;
+      background-color: #007bff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0 auto 15px auto; /* Center the button */
+      transition: background-color 0.2s;
+    }
+
+    .show-full-menu-btn:hover {
+      background-color: #0056b3;
+    }
+
   </style>
 </head>
 <body>
@@ -144,49 +173,49 @@
     <div class="week" id="weekA">
       <div class="day-grid">
         <div class="day-card">
-          <h3>Monday</h3>
+          <h3>Monday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Boiled Chole</li><li>Oats</li><li>Poha</li><li>Tamarind Chutney</li><li>Jalebi</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Chapati</li><li>Dal Makhani</li><li>Gobi Capsicum Masala Dry</li><li>Chole Curry Dry</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Masalacorn & Lemon</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Phulka</li><li>Chana Dal</li><li>Malai Kofta / Raw Banana Kofta</li><li>Boondi</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Tuesday</h3>
+          <h3>Tuesday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mixed Fruit Jam</li><li>Boiled Green Gram</li><li>Chocos</li><li>Kachoori</li><li>Curd Chutney</li><li>Aloo Sabji</li><li>Raw Banana</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Phulka</li><li>Dal (Masoor)</li><li>Bhindi Aloo Bhujia</li><li>Red Pumpkin Chana Masala</li><li>Toi Ki Sabzi (Sponge Gourd)</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Roasted Phool Makhana</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Ghee Rice</li><li>Roti</li><li>Toor Dal</li><li>Veg Manchurian</li><li>Watermelon Fruit</li><li>Buttermilk</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Wednesday</h3>
+          <h3>Wednesday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Boiled Black Chana</li><li>Oats</li><li>Pav Bhaji</li><li>Pav Bhaji Masala</li><li>Aloo Bonda</li><li>Bread Bajji</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Phulka</li><li>Sweet Lassi</li><li>Dal (Rajma)</li><li>Carrot Peas</li><li>Peas Masala</li><li>Aloo Baigan Tamatar Masala</li><li>Sev Tamatar</li><li>Detox Water</li><li>Mirchi Bhajji</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Rusk (4 pieces)</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Ghee Rice</li><li>Roti</li><li>Masoor Dal</li><li>Kadai Paneer</li><li>Seasonal Fruit (Papaya, Orange, etc.)</li><li>Lemon Juice</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Thursday</h3>
+          <h3>Thursday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Green Gram Sprouts</li><li>Oats</li><li>Moong Dal Chilla</li><li>Tomato + Onion</li><li>Tomato Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Phulka</li><li>Dal (Toor)</li><li>Aloo Karela (dry)</li><li>Lauki Chana Dal (Semi-dry)</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Bhel Puri</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Peas Pulao</li><li>Methi Puri</li><li>Dal Tadka</li><li>Black Chana Curry</li><li>Sabudhana Kheer</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Friday</h3>
+          <h3>Friday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mixed Fruit Jam</li><li>Millet Sprouts</li><li>Cornflakes</li><li>Semiya Khichdi</li><li>Coconut Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal (Chana)</li><li>Cabbage Peas Dry</li><li>Mix Veg Curry</li><li>Fried Green Chilli</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Butter Salted Popcorn</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Chapati</li><li>Fried Dal</li><li>Soya Chunk Curry</li><li>Musk Melon Fruit</li><li>Buttermilk</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Saturday</h3>
+          <h3>Saturday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Boiled Green Gram</li><li>Chocos</li><li>Aloo Paratha</li><li>Cabbage Paratha</li><li>Curd</li><li>Green Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Green Methi Paratha</li><li>Mixed Dal Tadka</li><li>Jeera Aloo</li><li>Tindly Fry</li><li>Ridge Gourd Masala</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Bread Pakora with Sauce</li></ul></div>
-          <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Masoor Dal</li><li>Tawa Mix Veg Sabzi</li><li>Banana Fruit</li><li>Milk + Boost</li></ul></div>
+          <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Masoor Dal</li><li>Lawaania Veg Sabzi</li><li>Banana Fruit</li><li>Milk + Boost</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Sunday</h3>
+          <h3>Sunday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Chole / Green Gram Sprouts</li><li>Oats</li><li>Plain Dosa</li><li>Aloo Masala</li><li>Mix Veg Sambar</li><li>Coconut Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Veg Hyderabadi Biryani</li><li>Roti</li><li>Dal (Toor Dal)</li><li>Onion / Cucumber Raita</li><li>Paneer Butter Masala</li><li>Ice Cream</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Chana Chaat</li></ul></div>
@@ -199,49 +228,49 @@
     <div class="week" id="weekB">
       <div class="day-grid">
         <div class="day-card">
-          <h3>Monday</h3>
+          <h3>Monday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Millet Sprouts</li><li>Cornflakes</li><li>Poha</li><li>Sev</li><li>Jalebi</li><li>Tamarind Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal Fry</li><li>Jeera Aloo</li><li>Sev Tamatar</li><li>Kadi Pakoda</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Masalacorn & Lemon</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Channa Dal</li><li>Bangara Baigan Dry</li><li>Raw Banana Dry</li><li>Rice Kheer</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Tuesday</h3>
+          <h3>Tuesday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Green Gram Sprouts</li><li>Cornflakes</li><li>Poori</li><li>Aloo Sabji</li><li>Channa Masala</li><li>Bengali Chana Dal</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal (Masoor)</li><li>Mix Veg Dry</li><li>Aloo Saag Sabji</li><li>Bhindi Fry</li><li>Fried Green Chilli</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Roasted Phool Makhana</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Fried Rice</li><li>Roti</li><li>Toor Dal</li><li>Vegetable Manchurian</li><li>Papaya Fruit</li><li>Buttermilk</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Wednesday</h3>
+          <h3>Wednesday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Boiled Black Chana</li><li>Cornflakes</li><li>Rice Idli</li><li>Medu Vada (no onion)</li><li>Mix Veg Sambar</li><li>Coconut Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal (Rajma)</li><li>Sweet Lassi</li><li>Cabbage Peas Dry</li><li>Aloo Parwal Curry</li><li>Soya Beans Curry</li><li>Detox Water</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Rusk (4 pieces)</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Jeera Rice</li><li>Roti</li><li>Masoor Dal</li><li>Shahi Paneer</li><li>Muskmelon</li><li>Lemon Juice</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Thursday</h3>
+          <h3>Thursday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mixed Fruit Jam</li><li>Boiled Green Gram</li><li>Chocos</li><li>Macaroni</li><li>Aloo Bonda</li><li>Sauce</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal (Urad)</li><li>Mushroom Peas Aloo Masala</li><li>Peas Masala</li><li>Tindly Fry</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Bhel Puri</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Aloo Beans Dry</li><li>Beans Dry</li><li>Chole Curry</li><li>Fruit Custard</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Friday</h3>
+          <h3>Friday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mixed Fruit Jam</li><li>Chole</li><li>Green Gram</li><li>Chocos</li><li>Plain Utthappam</li><li>Coconut Chutney</li><li>Mix Veg Sambar</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Chana Dal</li><li>Paneer Chetpet Dry</li><li>Kadai Mix Veg Curry</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Butter Salted Popcorn</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Tomato Dal</li><li>Kala Channa Masala Curry</li><li>Watermelon Fruit</li><li>Buttermilk</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Saturday</h3>
+          <h3>Saturday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Boiled Chole</li><li>Oats</li><li>Poori</li><li>Aloo Masala</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Moong Dal Vegetable Khichdi</li><li>Roti</li><li>Dal (Toor)</li><li>Green Leaf Sabji</li><li>Aloo Gobhi Curry</li><li>Chow Chow Curry</li><li>Fried Green Chilli</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Bread Pakora with Sauce</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Dal Makhani</li><li>Lauki Chana Sabji</li><li>Milk + Boost</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Sunday</h3>
+          <h3>Sunday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango/Orange Jam</li><li>Boiled Green Gram</li><li>Oats</li><li>Aloo/Gobi Paratha</li><li>Green Chutney</li><li>Curd</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Mixed Veg Biryani</li><li>Roti</li><li>Raita</li><li>Dal (Toor)</li><li>Kadai Paneer</li><li>Mirchi Ka Salan</li><li>Onion+Tomato+Lemon Salad</li><li>Gulab Jamun</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Chana Chaat</li></ul></div>
@@ -254,49 +283,49 @@
     <div class="week" id="weekC">
       <div class="day-grid">
         <div class="day-card">
-          <h3>Monday</h3>
+          <h3>Monday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Boiled Chole</li><li>Oats</li><li>Poha</li><li>Tamarind Chutney</li><li>Jalebi</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Chapati</li><li>Dal Makhani</li><li>Gobi Capsicum Masala Dry</li><li>Chole Curry Dry</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Sambar Vada</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Phulka</li><li>Chana Dal</li><li>Malai Kofta / Raw Banana Kofta</li><li>Boondi</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Tuesday</h3>
+          <h3>Tuesday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mixed Fruit Jam</li><li>Boiled Green Gram</li><li>Chocos</li><li>Kachoori</li><li>Curd Chutney</li><li>Aloo Sabji</li><li>Raw Banana</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Phulka</li><li>Dal (Masoor)</li><li>Bhindi Aloo Bhujia</li><li>Red Pumpkin Chana Masala</li><li>Toi Ki Sabzi (Sponge Gourd)</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Punugulu with Kara Chutney</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Ghee Rice</li><li>Roti</li><li>Toor Dal</li><li>Veg Manchurian</li><li>Watermelon Fruit</li><li>Buttermilk</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Wednesday</h3>
+          <h3>Wednesday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Boiled Black Chana</li><li>Oats</li><li>Pav Bhaji</li><li>Pav Bhaji Masala</li><li>Aloo Bonda</li><li>Bread Bajji</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Phulka</li><li>Sweet Lassi</li><li>Dal (Rajma)</li><li>Carrot Peas</li><li>Peas Masala</li><li>Aloo Baigan Tamatar Masala</li><li>Sev Tamatar</li><li>Detox Water</li><li>Mirchi Bhajji</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Rusk (4 pieces)</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Ghee Rice</li><li>Roti</li><li>Masoor Dal</li><li>Kadai Paneer</li><li>Seasonal Fruit (Papaya, Orange, etc.)</li><li>Lemon Juice</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Thursday</h3>
+          <h3>Thursday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Green Gram Sprouts</li><li>Oats</li><li>Moong Dal Chilla</li><li>Tomato + Onion</li><li>Tomato Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Phulka</li><li>Dal (Toor)</li><li>Aloo Karela (dry)</li><li>Lauki Chana Dal (Semi-dry)</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Bhel Puri</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Peas Pulao</li><li>Methi Puri</li><li>Dal Tadka</li><li>Black Chana Curry</li><li>Sabudhana Kheer</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Friday</h3>
+          <h3>Friday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mixed Fruit Jam</li><li>Millet Sprouts</li><li>Cornflakes</li><li>Semiya Khichdi</li><li>Coconut Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal (Chana)</li><li>Cabbage Peas Dry</li><li>Mix Veg Curry</li><li>Fried Green Chilli</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Banana Bajji</li></ul></div>
           <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Chapati</li><li>Fried Dal</li><li>Soya Chunk Curry</li><li>Musk Melon Fruit</li><li>Buttermilk</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Saturday</h3>
+          <h3>Saturday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Boiled Green Gram</li><li>Chocos</li><li>Aloo Paratha</li><li>Cabbage Paratha</li><li>Curd</li><li>Green Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Green Methi Paratha</li><li>Mixed Dal Tadka</li><li>Jeera Aloo</li><li>Tindly Fry</li><li>Ridge Gourd Masala</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Makhana Chaat</li></ul></div>
-          <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Masoor Dal</li><li>Tawa Mix Veg Sabzi</li><li>Banana Fruit</li><li>Milk + Boost</li></ul></div>
+          <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Masoor Dal</li><li>Lawaania Veg Sabzi</li><li>Banana Fruit</li><li>Milk + Boost</li></ul></div>
         </div>
         <div class="day-card">
-          <h3>Sunday</h3>
+          <h3>Sunday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
           <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Chole / Green Gram Sprouts</li><li>Oats</li><li>Plain Dosa</li><li>Aloo Masala</li><li>Mix Veg Sambar</li><li>Coconut Chutney</li></ul></div>
           <div class="meal"><b>Lunch:</b><ul><li>Veg Hyderabadi Biryani</li><li>Roti</li><li>Dal (Toor Dal)</li><li>Onion / Cucumber Raita</li><li>Paneer Butter Masala</li><li>Sabu Tokda</li></ul></div>
           <div class="meal"><b>Snacks:</b><ul><li>Crispy Soyachunks</li></ul></div>
@@ -309,49 +338,49 @@
     <div class="week" id="weekD">
         <div class="day-grid">
             <div class="day-card">
-              <h3>Monday</h3>
+              <h3>Monday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
               <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Millet Sprouts</li><li>Cornflakes</li><li>Poha</li><li>Sev</li><li>Jalebi</li><li>Tamarind Chutney</li></ul></div>
               <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal Fry</li><li>Jeera Aloo</li><li>Sev Tamatar</li><li>Kadi Pakoda</li></ul></div>
               <div class="meal"><b>Snacks:</b><ul><li>Sambar Vada</li></ul></div>
               <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Channa Dal</li><li>Bangara Baigan Dry</li><li>Raw Banana Dry</li><li>Rice Kheer</li></ul></div>
             </div>
             <div class="day-card">
-              <h3>Tuesday</h3>
+              <h3>Tuesday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
               <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Green Gram Sprouts</li><li>Cornflakes</li><li>Poori</li><li>Aloo Sabji</li><li>Channa Masala</li><li>Bengali Chana Dal</li></ul></div>
               <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal (Masoor)</li><li>Mix Veg Dry</li><li>Aloo Saag Sabji</li><li>Bhindi Fry</li><li>Fried Green Chilli</li></ul></div>
               <div class="meal"><b>Snacks:</b><ul><li>Punugulu with Kara Chutney</li></ul></div>
               <div class="meal"><b>Dinner:</b><ul><li>Fried Rice</li><li>Roti</li><li>Toor Dal</li><li>Vegetable Manchurian</li><li>Papaya Fruit</li><li>Buttermilk</li></ul></div>
             </div>
             <div class="day-card">
-              <h3>Wednesday</h3>
+              <h3>Wednesday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
               <div class="meal"><b>Breakfast:</b><ul><li>Pineapple Jam</li><li>Boiled Black Chana</li><li>Cornflakes</li><li>Rice Idli</li><li>Medu Vada (no onion)</li><li>Mix Veg Sambar</li><li>Coconut Chutney</li></ul></div>
               <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal (Rajma)</li><li>Sweet Lassi</li><li>Cabbage Peas Dry</li><li>Aloo Parwal Curry</li><li>Soya Beans Curry</li><li>Detox Water</li></ul></div>
               <div class="meal"><b>Snacks:</b><ul><li>Rusk (4 pieces)</li></ul></div>
               <div class="meal"><b>Dinner:</b><ul><li>Jeera Rice</li><li>Roti</li><li>Masoor Dal</li><li>Shahi Paneer</li><li>Muskmelon</li><li>Lemon Juice</li></ul></div>
             </div>
             <div class="day-card">
-              <h3>Thursday</h3>
+              <h3>Thursday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
               <div class="meal"><b>Breakfast:</b><ul><li>Mixed Fruit Jam</li><li>Boiled Green Gram</li><li>Chocos</li><li>Macaroni</li><li>Aloo Bonda</li><li>Sauce</li></ul></div>
               <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Dal (Urad)</li><li>Mushroom Peas Aloo Masala</li><li>Peas Masala</li><li>Tindly Fry</li></ul></div>
               <div class="meal"><b>Snacks:</b><ul><li>Bhel Puri</li></ul></div>
               <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Aloo Beans Dry</li><li>Beans Dry</li><li>Chole Curry</li><li>Fruit Custard</li></ul></div>
             </div>
             <div class="day-card">
-              <h3>Friday</h3>
+              <h3>Friday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
               <div class="meal"><b>Breakfast:</b><ul><li>Mixed Fruit Jam</li><li>Chole</li><li>Green Gram</li><li>Chocos</li><li>Plain Utthappam</li><li>Coconut Chutney</li><li>Mix Veg Sambar</li></ul></div>
               <div class="meal"><b>Lunch:</b><ul><li>Rice</li><li>Roti</li><li>Chana Dal</li><li>Paneer Chetpet Dry</li><li>Kadai Mix Veg Curry</li></ul></div>
               <div class="meal"><b>Snacks:</b><ul><li>Banana Bajji</li></ul></div>
               <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Tomato Dal</li><li>Kala Channa Masala Curry</li><li>Watermelon Fruit</li><li>Buttermilk</li></ul></div>
             </div>
             <div class="day-card">
-              <h3>Saturday</h3>
+              <h3>Saturday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
               <div class="meal"><b>Breakfast:</b><ul><li>Mango Jam</li><li>Boiled Chole</li><li>Oats</li><li>Poori</li><li>Aloo Masala</li></ul></div>
               <div class="meal"><b>Lunch:</b><ul><li>Moong Dal Vegetable Khichdi</li><li>Roti</li><li>Dal (Toor)</li><li>Green Leaf Sabji</li><li>Aloo Gobhi Curry</li><li>Chow Chow Curry</li><li>Fried Green Chilli</li></ul></div>
               <div class="meal"><b>Snacks:</b><ul><li>Makhana Chat</li></ul></div>
               <div class="meal"><b>Dinner:</b><ul><li>Rice</li><li>Roti</li><li>Dal Makhani</li><li>Rad Pumpkin Sabji</li><li>Milk + Boost</li></ul></div>
             </div>
             <div class="day-card">
-              <h3>Sunday</h3>
+              <h3>Sunday</h3><button class="show-full-menu-btn" onclick="showFullDayMenu(this)">Show Full Day's Menu</button>
               <div class="meal"><b>Breakfast:</b><ul><li>Mango/Orange Jam</li><li>Boiled Green Gram</li><li>Oats</li><li>Aloo/Gobi Paratha</li><li>Green Chutney</li><li>Curd</li></ul></div>
               <div class="meal"><b>Lunch:</b><ul><li>Mixed Veg Biryani</li><li>Roti</li><li>Raita</li><li>Dal (Toor)</li><li>Kadai Paneer</li><li>Mirchi Ka Salan</li><li>Onion+Tomato+Lemon Salad</li><li>Double Ka Meetha</li></ul></div>
               <div class="meal"><b>Snacks:</b><ul><li>Crispy Soyachunks</li></ul></div>
@@ -388,8 +417,18 @@
       if (hour >= 10 && hour < 15) return "Lunch";    
       if (hour >= 15 && hour < 18) return "Snacks";   
       if (hour >= 18 && hour < 22) return "Dinner";  
-      return "Breakfast";
+      return "Breakfast"; // Return null if outside all meal times
     }
+    
+    // New function to show all meals for a day
+    function showFullDayMenu(button) {
+      const dayCard = button.closest('.day-card');
+      if (dayCard) {
+        dayCard.classList.add('show-all-meals');
+        button.style.display = 'none'; // Hide button after clicking
+      }
+    }
+
 
     function updateView(auto = true) {
       let selectedWeek, selectedDay;
@@ -415,20 +454,39 @@
 
       if (dayCard) {
         dayCard.style.display = 'flex';
-        dayCard.querySelectorAll('.meal').forEach(m => m.style.backgroundColor = '');
-        if (auto && selectedWeek === getCurrentWeek() && selectedDay === getCurrentDay()) {
-            const meal = getCurrentMeal();
-            if (meal) {
-                const mealEl = [...dayCard.querySelectorAll('.meal')].find(m =>
-                  m.querySelector('b')?.textContent.includes(meal)
-                );
-                if (mealEl) {
-                  mealEl.style.backgroundColor = "#C1E1C1";
-                  setTimeout(() => { 
-                    mealEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                  }, 100); 
-                }
+        // Reset the state first
+        dayCard.classList.remove('show-all-meals');
+        const showMenuBtn = dayCard.querySelector('.show-full-menu-btn');
+        if (showMenuBtn) showMenuBtn.style.display = 'none';
+        
+        // Let CSS handle hiding by default, just remove any inline styles
+        dayCard.querySelectorAll('.meal').forEach(m => {
+            m.style.display = '';
+            m.style.backgroundColor = '';
+        });
+
+
+        const meal = getCurrentMeal();
+        const isCurrentDay = (auto && selectedWeek === getCurrentWeek() && selectedDay === getCurrentDay());
+
+        if (meal && isCurrentDay) {
+            // There is a current meal, so show only that one
+            const mealEl = [...dayCard.querySelectorAll('.meal')].find(m =>
+              m.querySelector('b')?.textContent.includes(meal)
+            );
+            if (mealEl) {
+              mealEl.style.display = 'block'; // Make this meal visible
+              if (showMenuBtn) showMenuBtn.style.display = 'block'; // Show the expand button
+
+              // Highlighting and scrolling logic
+              mealEl.style.backgroundColor = "#C1E1C1";
+              setTimeout(() => { 
+                mealEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }, 100); 
             }
+        } else {
+            // It's outside meal times or not the current day, so show all meals
+            dayCard.classList.add('show-all-meals');
         }
       }
     }
@@ -437,3 +495,4 @@
 
 </body>
 </html>
+
